@@ -1,0 +1,24 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Model artifacts -- NEVER commit
+*.pt
+*.safetensors
+*.npz
+*.bin
+
+# Results that are too large or regeneratable
+results/activations/
+wandb/
+
+# Secrets
+*.env
+.env
+.hf_token
+
+# OS junk
+.DS_Store
+Thumbs.db

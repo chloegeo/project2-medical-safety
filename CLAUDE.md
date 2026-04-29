@@ -1,17 +1,8 @@
-Project 2: Medical Safety Representations in LLMs
-Current Status
 
-Day 1: Repo setup complete. Smoke test script written, not yet run.
-Next milestone: Submit 4-page short paper to ICML 2026 Mechanistic Interpretability Workshop.
-After workshop: Continue Steps 4-6 for ICLR 2027 full submission.
-
-Update the top of this file with the current day and status each session.
-Researcher
-Chloe Georgiou, CS PhD at UC Irvine (SPROUT Lab, advised by Gene Tsudik and Emiliano De Cristofaro). Security and privacy background (Androguard, MobSF, Wireshark, mitmproxy). This is my first mechanistic interpretability project. Advisor is supportive and will be looped in once Step 2 results exist.
 Parallel deadline: separate paper nearly done, should not interfere with this work.
 Compute Environment
 
-Local: Windows ThinkPad T14s with WSL Ubuntu, CPU only, no CUDA. Used for git, editing, Claude Code sessions, and paper writing. NOT used for running models.
+Local: Windows ThinkPad T14s with WSL Ubuntu, CPU only, no CUDA. Used for git, editing, and paper writing. NOT used for running models.
 Validation: Google Colab Pro, T4 GPU (15GB VRAM). Used for 1B-model smoke tests and small-scale debugging.
 Production: Google Colab Pro, A100 GPU. Used for LLaMA-3.1-8B activation extraction and behavioral evaluation.
 Budget: ~$10-25 in Anthropic API cost for judge scoring. Colab Pro subscription covers GPU.
@@ -126,16 +117,3 @@ Arditi et al., "Refusal in LMs Is Mediated by a Single Direction" -- refusal as 
 Qi et al., ICLR 2024, "Fine-tuning Aligned LLMs Compromises Safety" -- foundational. Establishes that fine-tuning breaks safety behaviorally. You explain the MECHANISM for medical.
 Hui et al. 2025, "TRIDENT" -- domain-specific safety benchmark across medicine/law/finance. Behavioral only; legitimizes your domain framing.
 
-When Asking Claude Code for Help
-
-Always specify the compute target (Colab T4 / Colab A100 with 4-bit 8B).
-Request memory-conscious code by default.
-Request shape/dtype/device assertions and logging at every step.
-Do NOT ask Claude for research decisions (which layer? which metric?). Ask for sweeps or comparisons so you can decide.
-Mention the terminology rules when writing paper text.
-
-Submission Target
-
-Workshop (near-term): ICML 2026 Mechanistic Interpretability Workshop. Non-archival, does not burn ICLR submission. https://mechinterpworkshop.com/cfp/
-Main venue: ICLR 2027.
-Backup main venue: EMNLP 2027, or reframe as security paper for CCS 2027.

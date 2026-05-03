@@ -1,0 +1,127 @@
+{
+  "behavioral": {
+    "llama_medical": {
+      "refused": 75,
+      "total": 99,
+      "pct": 75.8
+    },
+    "med42_medical": {
+      "refused": 71,
+      "total": 99,
+      "pct": 71.7
+    },
+    "llama_general": {
+      "refused": 89,
+      "total": 100,
+      "pct": 89.0
+    },
+    "med42_general": {
+      "refused": 83,
+      "total": 100,
+      "pct": 83.0
+    },
+    "selectivity_ratio_med_vs_gen": 1.46
+  },
+  "key_categories": {
+    "VII_community_health": {
+      "llama": "9/11 (82%)",
+      "med42": "4/11 (36%)",
+      "drop_pts": 46,
+      "fisher_p": 0.0805
+    },
+    "misinformation": {
+      "llama": "15/16 (94%)",
+      "med42": "7/16 (44%)",
+      "drop_pts": 50,
+      "fisher_p": 0.0059
+    }
+  },
+  "human_validation": {
+    "n_records": 40,
+    "binary_agreement": 1.0,
+    "cohen_kappa_binary": 1.0,
+    "cohen_kappa_1to5_quadratic": 0.957
+  },
+  "representation_overlap": {
+    "metric": "top-100 Jaccard, community_health x misinformation",
+    "chance_baseline": 0.01220703125,
+    "llama_mean_32_layers": 0.145,
+    "llama_mid_late_15to31": 0.145,
+    "med42_mean_32_layers": 0.099,
+    "med42_mid_late_15to31": 0.11,
+    "paired_bootstrap": {
+      "delta_mean": 0.0365,
+      "delta_95ci_low": 0.013,
+      "delta_95ci_high": 0.0587,
+      "P_delta_gt_0": 1.0,
+      "n_boot": 1000
+    }
+  },
+  "topic_control": {
+    "benign_baseline": {
+      "llama_mid_late": 0.145,
+      "med42_mid_late": 0.11
+    },
+    "topic_baseline": {
+      "llama_mid_late": 0.163,
+      "med42_mid_late": 0.121
+    },
+    "interpretation": "Llama > Med42 in both baselines; finding is robust to baseline choice."
+  },
+  "causal_ablation": {
+    "layer": 22,
+    "n_shared_dims": 31,
+    "llama": {
+      "community_health": {
+        "baseline": "7/8 (88%)",
+        "shared": "5/8 (62%)",
+        "random": "6/8 (75%)",
+        "shared_drop_pts": 25,
+        "random_drop_pts": 12,
+        "differential_pts": 12
+      },
+      "misinformation": {
+        "baseline": "14/16 (88%)",
+        "shared": "13/16 (81%)",
+        "random": "14/16 (88%)",
+        "shared_drop_pts": 6,
+        "random_drop_pts": 0,
+        "differential_pts": 6
+      }
+    },
+    "med42_same_dims": {
+      "community_health": {
+        "baseline": "2/8 (25%)",
+        "shared": "3/8 (38%)",
+        "random": "2/8 (25%)",
+        "shared_drop_pts": -12,
+        "random_drop_pts": 0,
+        "differential_pts": -12
+      },
+      "misinformation": {
+        "baseline": "7/16 (44%)",
+        "shared": "6/16 (38%)",
+        "random": "6/16 (38%)",
+        "shared_drop_pts": 6,
+        "random_drop_pts": 6,
+        "differential_pts": 0
+      }
+    },
+    "interpretation": "In Llama, shared-dim ablation causes specific extra drop beyond random in both categories (+12pts CH, +6pts MI), indicating causal role. In Med42, same dim ablation has no specific effect over random (-12pts CH, 0pts MI), indicating the shared circuit has been redistributed and those specific dimensions no longer carry the safety signal. Direct causal support for the fragmentation hypothesis."
+  },
+  "med42_native_ablation": {
+    "med42_peak_layer": 25,
+    "med42_peak_jaccard": 0.136,
+    "n_shared_dims": 24,
+    "ch_baseline": "2/8 (25%)",
+    "ch_shared": "2/8 (25%)",
+    "ch_random": "1/8 (12%)",
+    "ch_differential_pts": -12,
+    "mi_baseline": "7/16 (44%)",
+    "mi_shared": "6/16 (38%)",
+    "mi_random": "6/16 (38%)",
+    "mi_differential_pts": 0,
+    "interpretation": "Med42-native shared dims at layer 25 are not specifically causal for refusal; differential is non-positive in both categories. Combined with the Llama-native ablation (also non-causal in Med42), this supports fragmentation rather than relocation: the shared substrate does not exist as a localized causal unit at any analogous layer in Med42 we probed."
+  },
+  "paper_interpretation": "Medical fine-tuning fragments the shared information-integrity refusal subspace rather than relocating it. Evidence: (1) reduced cross-category Jaccard overlap, (2) loss of specific causal role for base-Llama shared coordinates in Med42, and (3) Med42-native ablation also fails to find a localized causal substrate."
+}

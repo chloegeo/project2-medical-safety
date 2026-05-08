@@ -123,5 +123,34 @@
     "mi_differential_pts": 0,
     "interpretation": "Med42-native shared dims at layer 25 are not specifically causal for refusal; differential is non-positive in both categories. Combined with the Llama-native ablation (also non-causal in Med42), this supports fragmentation rather than relocation: the shared substrate does not exist as a localized causal unit at any analogous layer in Med42 we probed."
   },
-  "paper_interpretation": "Medical fine-tuning fragments the shared information-integrity refusal subspace rather than relocating it. Evidence: (1) reduced cross-category Jaccard overlap, (2) loss of specific causal role for base-Llama shared coordinates in Med42, and (3) Med42-native ablation also fails to find a localized causal substrate."
+  "paper_interpretation": "Medical fine-tuning fragments the shared information-integrity refusal subspace rather than relocating it. Evidence: (1) reduced cross-category Jaccard overlap, (2) loss of specific causal role for base-Llama shared coordinates in Med42, and (3) Med42-native ablation also fails to find a localized causal substrate.",
+  "llama_multiseed_ablation": {
+    "n_seeds": 10,
+    "baseline_ch": 0.75,
+    "baseline_mi": 0.875,
+    "shared_ch_drop_pts": 37.5,
+    "shared_mi_drop_pts": -6.2,
+    "random_ch_mean_pts": 3.8,
+    "random_ch_std_pts": 13.7,
+    "random_mi_mean_pts": -5.0,
+    "random_mi_std_pts": 2.5,
+    "ch_z_score": 2.45,
+    "mi_z_score": -0.5,
+    "interpretation": "Multi-seed (n=10) random-control sweep at base Llama layer 22 confirms the focal-pair shared-dim ablation effect is statistically distinguishable from random null for community-health (z=+2.45, ~99th percentile) but not for misinformation (z=-0.50, null). The focal pair's shared dimensions therefore have a verified causal role on one of the two regressed behaviors in base Llama. The misinformation regression mechanism remains unclear at the layer/coordinates we tested."
+  },
+  "llama_multiseed_50_ablation": {
+    "n_seeds": 50,
+    "baseline_ch": 0.625,
+    "baseline_mi": 0.875,
+    "shared_ch_drop_pts": 12.5,
+    "shared_mi_drop_pts": 6.2,
+    "random_ch_mean_pts": -10.8,
+    "random_ch_std_pts": 8.3,
+    "random_mi_mean_pts": -5.1,
+    "random_mi_std_pts": 2.4,
+    "ch_z_score": 2.8,
+    "mi_z_score": 4.74,
+    "ch_empirical_p": 0.0392,
+    "mi_empirical_p": 0.0196
+  }
 }

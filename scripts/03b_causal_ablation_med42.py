@@ -1,4 +1,3 @@
-"""03b_causal_ablation_med42.py -- Apply same shared-dim ablation to Med42."""
 import argparse, json, os, sys
 from pathlib import Path
 import numpy as np

@@ -1,27 +1,4 @@
-"""
-00_load_model.py -- Smoke test for model loading and activation extraction.
- 
-Purpose:
-    Verify that we can (a) load a HuggingFace instruction-tuned model,
-    (b) apply its chat template correctly, (c) generate a response, and
-    (d) extract MLP activations at a chosen layer via forward hooks.
-    Validates the entire mechanistic pipeline on a tiny scale before
-    running expensive experiments.
- 
-Usage:
-    # Validation with 1B model (no quantization needed, works on Colab T4):
-    python scripts/00_load_model.py --model meta-llama/Llama-3.2-1B-Instruct
- 
-    # Production with 8B model on Colab Pro A100 (use 4-bit quantization):
-    python scripts/00_load_model.py \\
-        --model meta-llama/Llama-3.1-8B-Instruct \\
-        --quantize
- 
-    # Test a different layer:
-    python scripts/00_load_model.py --model meta-llama/Llama-3.2-1B-Instruct --layer 12
- 
-If this script fails, everything downstream will fail. Fix this first.
-"""
+
 import argparse
 import sys
  

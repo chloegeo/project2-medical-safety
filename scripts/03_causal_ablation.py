@@ -1,6 +1,3 @@
-"""
-03_causal_ablation.py -- Causal ablation of shared safety dimensions.
-"""
 import argparse, json, os, sys
 from pathlib import Path
 import numpy as np

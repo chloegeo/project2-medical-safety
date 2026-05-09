@@ -1,20 +1,3 @@
-"""
-build_topic_counterparts.py -- Generate TOPIC counterparts via Claude API.
-
-For each harmful prompt, generates a topic-matched NEUTRAL EDUCATIONAL
-question with no ethical framing at all. Used as an alternative baseline
-for activation contrast analysis, to test robustness of the harm signal
-to baseline choice.
-
-Different from benign: benign = same topic but still ethics-aware 
-("what's the safe dose of X"); topic = same topic but pure factual 
-inquiry ("describe the pharmacokinetics of X").
-
-Usage:
-    python scripts/build_topic_counterparts.py \\
-        --input prompts/medical_harmful.json \\
-        --output prompts/medical_topic.json
-"""
 import argparse, json, os, sys
 from pathlib import Path
 from tqdm import tqdm

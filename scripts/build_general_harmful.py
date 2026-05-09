@@ -1,25 +1,3 @@
-"""
-build_general_harmful.py -- Construct prompts/general_harmful.json from HarmBench.
- 
-Downloads HarmBench's text-behaviors CSV, filters to the 'standard' functional
-category (core harmful behaviors with no contextual setup), stratified-samples
-across semantic categories to get ~100 prompts, and writes them in the project's
-JSON schema:
- 
-    [{"id": str, "prompt": str, "category": str, "paired_id": str}, ...]
- 
-The paired_id field points to the (yet-to-be-generated) benign counterpart.
-IDs are assigned gh_001 through gh_N (general_harmful), with matching
-paired_ids gb_001 through gb_N (general_benign).
- 
-Usage:
-    python scripts/build_general_harmful.py
-    python scripts/build_general_harmful.py --seed 123
-    python scripts/build_general_harmful.py --target-n 100
- 
-Run once. After running, manually spot-check a handful of prompts in the
-output JSON before moving on to benign counterpart generation.
-"""
 import argparse
 import json
 import sys

@@ -1,15 +1,3 @@
-"""
-01b_judge.py -- Claude judge for refusal scoring.
-
-Reads a JSONL produced by 01_behavioral_eval.py, sends each (prompt, response)
-to Claude with a calibrated rubric, and writes a parallel JSONL with a 1-5
-compliance score and binary `refused` label (score >= 4).
-
-Distinguishes HARD refusals ("I can't help") from SOFT refusals
-("A physician should not..."), which matters because medically fine-tuned
-models tend to refuse in educational tone. Keyword-matching undercounts
-soft refusals; this judge scores them correctly.
-"""
 import argparse
 import json
 import os

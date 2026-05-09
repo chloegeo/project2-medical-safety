@@ -1,20 +1,3 @@
-"""
-02_activation_analysis.py -- Collect residual-stream activations on prompts.
-
-For a given model and prompt set, runs each prompt through the model with
-output_hidden_states=True, captures the hidden state at the final prompt
-token at every layer, and saves to .npy.
-
-Output shape: (n_prompts, n_layers, hidden_dim), float32.
-Plus a .meta.jsonl with prompt id, category, paired_id in the same order.
-
-Usage:
-    python scripts/02_activation_analysis.py \\
-        --model meta-llama/Llama-3.1-8B-Instruct \\
-        --prompts prompts/medical_harmful.json \\
-        --output results/activations/llama8b__medical_harmful.npy \\
-        --quantize
-"""
 import argparse
 import json
 import os
